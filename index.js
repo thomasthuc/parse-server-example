@@ -49,7 +49,7 @@ app.get('/test', function(req, res) {
 // Config dashboard
 var allowInsecureHTTP = false
 
-var dashboard = new ParseDashboard({
+/*var dashboard = new ParseDashboard({
   "apps": [
     {
       "serverURL": "http://localhost:1337/parse",
@@ -67,7 +67,7 @@ var dashboard = new ParseDashboard({
   "useEncryptedPasswords": true
 }, allowInsecureHTTP);
 
-app.use('/dashboard', dashboard);
+app.use('/dashboard', dashboard);*/
 
 
 
