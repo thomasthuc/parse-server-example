@@ -52,7 +52,7 @@ var allowInsecureHTTP = false
 var dashboard = new ParseDashboard({
   "apps": [
     {
-      "serverURL": "http://localhost:1337/parse",
+      "serverURL": "https://localhost:1337/parse",
       "appId": "myAppId",
       "masterKey": "myMasterKey",
       "appName": "ceo-connector"
