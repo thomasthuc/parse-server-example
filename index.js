@@ -4,6 +4,8 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
+var ParseDashboard = require('parse-dashboard');
+
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -44,12 +46,40 @@ app.get('/', function(req, res) {
 app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/test.html'));
 });
+// Config dashboard
+var allowInsecureHTTP = false
+
+var dashboard = new ParseDashboard({
+  "apps": [
+    {
+      "serverURL": "http://localhost:1337/parse",
+      "appId": "myAppId",
+      "masterKey": "myMasterKey",
+      "appName": "ceo-connector"
+    }
+  ],
+"users": [
+    {
+      "user”:”mobi”,
+      "pass”:”mobi”
+    }
+  ],
+  "useEncryptedPasswords": true
+}, allowInsecureHTTP);
+
+app.use('/dashboard', dashboard);
+
+
 
 var port = process.env.PORT || 1337;
 var httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
     console.log('parse-server-example running on port ' + port + '.');
 });
+
+
+
+
 
 // This will enable the Live Query real-time server
 ParseServer.createLiveQueryServer(httpServer);
