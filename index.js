@@ -58,12 +58,13 @@ var dashboard = new ParseDashboard({
       "appName": "ceo-connector"
     }
   ],
-"users": [
+  "users": [
     {
-      "user”:”mobi”,
-      "pass”:”mobi”
+      "user": "mobi",
+      "pass": "mobi"
     }
-  ]}, allowInsecureHTTP);
+  ]
+}, allowInsecureHTTP);
 
 app.use('/dashboard', dashboard);
 
